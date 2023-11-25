@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "com.splitprice.config.ApplicationProperties",
+      "sourceType": "com.splitprice.config.ApplicationProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

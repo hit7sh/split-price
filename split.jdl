@@ -1,0 +1,26 @@
+
+entity Users {
+	userName String,
+	name String,
+   	userId Integer,
+}
+
+entity Transaction {
+	fromUserName String,
+    amount Integer,
+    userId Integer,
+    status Status
+}
+enum Status {
+	BORROW,
+    OWE
+}
+
+relationship OneToMany {
+	Users to Transaction{transactions}
+}
+dto Users with mapstruct
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
