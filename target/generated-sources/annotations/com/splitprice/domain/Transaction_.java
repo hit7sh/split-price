@@ -12,7 +12,7 @@ public abstract class Transaction_ {
 	public static volatile SingularAttribute<Transaction, String> fromUserName;
 	public static volatile SingularAttribute<Transaction, Integer> amount;
 	public static volatile SingularAttribute<Transaction, Long> id;
-	public static volatile SingularAttribute<Transaction, Users> transactions;
+	public static volatile SingularAttribute<Transaction, Person> transactions;
 	public static volatile SingularAttribute<Transaction, Integer> userId;
 	public static volatile SingularAttribute<Transaction, Status> status;
 

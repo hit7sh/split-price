@@ -26,7 +26,7 @@ public class TransactionResource {
 
     private final Logger log = LoggerFactory.getLogger(TransactionResource.class);
 
-    private static final String ENTITY_NAME = "splitpriceTransaction";
+    private static final String ENTITY_NAME = "splitPriceTransaction";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;

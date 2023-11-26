@@ -1,12 +1,12 @@
 
-entity Users {
-	userName String,
+entity Person {
+	personName String,
 	name String,
-   	userId Integer,
+   	personId Integer,
 }
 
 entity Transaction {
-	fromUserName String,
+    fromUserName String,
     amount Integer,
     userId Integer,
     status Status
@@ -17,9 +17,9 @@ enum Status {
 }
 
 relationship OneToMany {
-	Users to Transaction{transactions}
+	Person to Transaction{transactions}
 }
-dto Users with mapstruct
+dto Person with mapstruct
 service all with serviceImpl
 
 // Set an angular suffix

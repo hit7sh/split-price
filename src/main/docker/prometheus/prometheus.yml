@@ -24,7 +24,7 @@ scrape_configs:
     #basic_auth:
     # username: admin
     # password: admin
-    metrics_path: /services/Splitprice/management/prometheus
+    metrics_path: /services/SplitPrice/management/prometheus
     static_configs:
       - targets:
           # On MacOS, replace localhost by host.docker.internal

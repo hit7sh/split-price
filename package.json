@@ -1,8 +1,8 @@
 {
-  "name": "splitprice",
+  "name": "split-price",
   "version": "0.0.0",
   "private": true,
-  "description": "Description for Splitprice",
+  "description": "Description for SplitPrice",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",

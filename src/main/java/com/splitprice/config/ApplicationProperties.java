@@ -3,7 +3,7 @@ package com.splitprice.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Properties specific to Splitprice.
+ * Properties specific to Split Price.
  * <p>
  * Properties are configured in the {@code application.yml} file.
  * See {@link tech.jhipster.config.JHipsterProperties} for a good example.

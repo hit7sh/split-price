@@ -36,7 +36,7 @@ public class Transaction implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "transactions" }, allowSetters = true)
-    private Users transactions;
+    private Person transactions;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -105,16 +105,16 @@ public class Transaction implements Serializable {
         this.status = status;
     }
 
-    public Users getTransactions() {
+    public Person getTransactions() {
         return this.transactions;
     }
 
-    public void setTransactions(Users users) {
-        this.transactions = users;
+    public void setTransactions(Person person) {
+        this.transactions = person;
     }
 
-    public Transaction transactions(Users users) {
-        this.setTransactions(users);
+    public Transaction transactions(Person person) {
+        this.setTransactions(person);
         return this;
     }
 

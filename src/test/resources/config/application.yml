@@ -15,7 +15,7 @@
 
 spring:
   application:
-    name: Splitprice
+    name: SplitPrice
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -33,13 +33,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: splitprice-task-
+      thread-name-prefix: split-price-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: splitprice-scheduling-
+      thread-name-prefix: split-price-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -63,9 +63,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'splitpriceApp'
+    name: 'splitPriceApp'
   mail:
-    from: Splitprice@localhost.com
+    from: SplitPrice@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender

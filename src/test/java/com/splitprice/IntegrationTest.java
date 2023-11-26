@@ -1,6 +1,6 @@
 package com.splitprice;
 
-import com.splitprice.SplitpriceApp;
+import com.splitprice.SplitPriceApp;
 import com.splitprice.config.AsyncSyncConfiguration;
 import com.splitprice.config.EmbeddedSQL;
 import com.splitprice.config.TestSecurityConfiguration;
@@ -16,7 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = { SplitpriceApp.class, AsyncSyncConfiguration.class, TestSecurityConfiguration.class })
+@SpringBootTest(classes = { SplitPriceApp.class, AsyncSyncConfiguration.class, TestSecurityConfiguration.class })
 @EmbeddedSQL
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 public @interface IntegrationTest {

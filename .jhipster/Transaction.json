@@ -1,7 +1,7 @@
 {
   "applications": "*",
-  "changelogDate": "20231125131147",
-  "clientRootFolder": "Splitprice",
+  "changelogDate": "20231126142123",
+  "clientRootFolder": "SplitPrice",
   "databaseType": "sql",
   "dto": "no",
   "embedded": false,
@@ -27,13 +27,13 @@
   ],
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
-  "microserviceName": "Splitprice",
+  "microserviceName": "SplitPrice",
   "name": "Transaction",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "users",
+      "otherEntityName": "person",
       "otherEntityRelationshipName": "transaction",
       "relationshipName": "transactions",
       "relationshipType": "many-to-one"

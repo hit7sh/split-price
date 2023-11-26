@@ -21,18 +21,18 @@ import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
-public class SplitpriceApp {
+public class SplitPriceApp {
 
-    private static final Logger log = LoggerFactory.getLogger(SplitpriceApp.class);
+    private static final Logger log = LoggerFactory.getLogger(SplitPriceApp.class);
 
     private final Environment env;
 
-    public SplitpriceApp(Environment env) {
+    public SplitPriceApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes Splitprice.
+     * Initializes SplitPrice.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -65,7 +65,7 @@ public class SplitpriceApp {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(SplitpriceApp.class);
+        SpringApplication app = new SpringApplication(SplitPriceApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

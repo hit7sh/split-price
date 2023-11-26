@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20231126142122",
+  "clientRootFolder": "SplitPrice",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "person",
+  "fields": [
+    {
+      "fieldName": "personName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "personId",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "SplitPrice",
+  "name": "Person",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "transactions",
+      "relationshipName": "transaction",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
