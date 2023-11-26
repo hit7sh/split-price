@@ -165,11 +165,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
+            issuer-uri: http://localhost:8080/realms/splitprice
         registration:
           oidc:
-            client-id: internal
-            client-secret: internal
+            client-id: webapp
+            client-secret: anRg0aE9MjCBLjaLk29Unt1pRGC8QZOu
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:

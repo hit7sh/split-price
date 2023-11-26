@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Split Price</a> &gt; <a href="index.source.html" class="el_package">com.splitprice.service.impl</a> &gt; <span class="el_source">PersonServiceImpl.java</span></div><h1>PersonServiceImpl.java</h1><pre class="source lang-java linenums">package com.splitprice.service.impl;
+
+import com.splitprice.domain.Person;
+import com.splitprice.repository.PersonRepository;
+import com.splitprice.service.PersonService;
+import com.splitprice.service.dto.PersonDTO;
+import com.splitprice.service.mapper.PersonMapper;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Service Implementation for managing {@link Person}.
+ */
+@Service
+@Transactional
+public class PersonServiceImpl implements PersonService {
+
+<span class="nc" id="L24">    private final Logger log = LoggerFactory.getLogger(PersonServiceImpl.class);</span>
+
+    private final PersonRepository personRepository;
+
+    private final PersonMapper personMapper;
+
+<span class="nc" id="L30">    public PersonServiceImpl(PersonRepository personRepository, PersonMapper personMapper) {</span>
+<span class="nc" id="L31">        this.personRepository = personRepository;</span>
+<span class="nc" id="L32">        this.personMapper = personMapper;</span>
+<span class="nc" id="L33">    }</span>
+
+    @Override
+    public PersonDTO save(PersonDTO personDTO) {
+<span class="nc" id="L37">        log.debug(&quot;Request to save Person : {}&quot;, personDTO);</span>
+<span class="nc" id="L38">        Person person = personMapper.toEntity(personDTO);</span>
+<span class="nc" id="L39">        person = personRepository.save(person);</span>
+<span class="nc" id="L40">        return personMapper.toDto(person);</span>
+    }
+
+    @Override
+    public PersonDTO update(PersonDTO personDTO) {
+<span class="nc" id="L45">        log.debug(&quot;Request to update Person : {}&quot;, personDTO);</span>
+<span class="nc" id="L46">        Person person = personMapper.toEntity(personDTO);</span>
+<span class="nc" id="L47">        person = personRepository.save(person);</span>
+<span class="nc" id="L48">        return personMapper.toDto(person);</span>
+    }
+
+    @Override
+    public Optional&lt;PersonDTO&gt; partialUpdate(PersonDTO personDTO) {
+<span class="nc" id="L53">        log.debug(&quot;Request to partially update Person : {}&quot;, personDTO);</span>
+
+<span class="nc" id="L55">        return personRepository</span>
+<span class="nc" id="L56">            .findById(personDTO.getId())</span>
+<span class="nc" id="L57">            .map(existingPerson -&gt; {</span>
+<span class="nc" id="L58">                personMapper.partialUpdate(existingPerson, personDTO);</span>
+
+<span class="nc" id="L60">                return existingPerson;</span>
+            })
+<span class="nc" id="L62">            .map(personRepository::save)</span>
+<span class="nc" id="L63">            .map(personMapper::toDto);</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List&lt;PersonDTO&gt; findAll() {
+<span class="nc" id="L69">        log.debug(&quot;Request to get all People&quot;);</span>
+<span class="nc" id="L70">        return personRepository.findAll().stream().map(personMapper::toDto).collect(Collectors.toCollection(LinkedList::new));</span>
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional&lt;PersonDTO&gt; findOne(Long id) {
+<span class="nc" id="L76">        log.debug(&quot;Request to get Person : {}&quot;, id);</span>
+<span class="nc" id="L77">        return personRepository.findById(id).map(personMapper::toDto);</span>
+    }
+
+    @Override
+    public void delete(Long id) {
+<span class="nc" id="L82">        log.debug(&quot;Request to delete Person : {}&quot;, id);</span>
+<span class="nc" id="L83">        personRepository.deleteById(id);</span>
+<span class="nc" id="L84">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
