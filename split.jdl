@@ -13,13 +13,14 @@ entity Transaction {
 }
 enum Status {
 	BORROW,
-    OWE
+        OWE
 }
 
 relationship OneToMany {
-	Person to Transaction{transactions}
+	Person{transactions} to Transaction{person}
 }
-dto Person with mapstruct
+
+dto * with mapstruct
 service all with serviceImpl
 
 // Set an angular suffix

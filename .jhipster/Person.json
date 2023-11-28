@@ -1,6 +1,6 @@
 {
   "applications": "*",
-  "changelogDate": "20231126142122",
+  "changelogDate": "20231128154848",
   "clientRootFolder": "SplitPrice",
   "databaseType": "sql",
   "dto": "mapstruct",
@@ -29,8 +29,8 @@
   "relationships": [
     {
       "otherEntityName": "transaction",
-      "otherEntityRelationshipName": "transactions",
-      "relationshipName": "transaction",
+      "otherEntityRelationshipName": "person",
+      "relationshipName": "transactions",
       "relationshipType": "one-to-many"
     }
   ],
