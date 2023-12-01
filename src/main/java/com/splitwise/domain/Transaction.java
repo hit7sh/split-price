@@ -2,6 +2,8 @@ package com.splitwise.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.splitwise.domain.enumeration.Status;
+import com.splitwise.service.dto.TransactionDTO;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -116,6 +118,16 @@ public class Transaction implements Serializable {
     public Transaction person(Person person) {
         this.setPerson(person);
         return this;
+    }
+    public TransactionDTO toTransactionDTO() {
+        TransactionDTO transactionDTO = new TransactionDTO();
+        transactionDTO.setPerson(person.toPersonDTO());
+        transactionDTO.setAmount(amount);
+        transactionDTO.setId(id);
+        transactionDTO.setFromUserName(fromUserName);
+        transactionDTO.setStatus(status);
+        transactionDTO.setUserId(userId);
+        return transactionDTO;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -9,56 +9,66 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-11-28T21:57:41+0530",
-    comments = "version: 1.5.2.Final, compiler: Eclipse JDT (IDE) 3.35.0.v20230814-2020, environment: Java 17.0.8.1 (Eclipse Adoptium)"
+    date = "2023-12-01T22:33:53+0530",
+    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 18.0.2.1 (Oracle Corporation)"
 )
 @Component
 public class PersonMapperImpl implements PersonMapper {
 
     @Override
-    public void partialUpdate(Person arg0, PersonDTO arg1) {
-        if ( arg1 == null ) {
-            return;
+    public Person toEntity(PersonDTO dto) {
+        if ( dto == null ) {
+            return null;
         }
 
-        if ( arg1.getId() != null ) {
-            arg0.setId( arg1.getId() );
-        }
-        if ( arg1.getName() != null ) {
-            arg0.setName( arg1.getName() );
-        }
-        if ( arg1.getPersonId() != null ) {
-            arg0.setPersonId( arg1.getPersonId() );
-        }
-        if ( arg1.getPersonName() != null ) {
-            arg0.setPersonName( arg1.getPersonName() );
-        }
+        Person person = new Person();
+
+        person.setId( dto.getId() );
+        person.setPersonName( dto.getPersonName() );
+        person.setName( dto.getName() );
+        person.setPersonId( dto.getPersonId() );
+
+        return person;
     }
 
     @Override
-    public PersonDTO toDto(Person arg0) {
-        if ( arg0 == null ) {
+    public PersonDTO toDto(Person entity) {
+        if ( entity == null ) {
             return null;
         }
 
         PersonDTO personDTO = new PersonDTO();
 
-        personDTO.setId( arg0.getId() );
-        personDTO.setPersonName( arg0.getPersonName() );
-        personDTO.setName( arg0.getName() );
-        personDTO.setPersonId( arg0.getPersonId() );
+        personDTO.setId( entity.getId() );
+        personDTO.setPersonName( entity.getPersonName() );
+        personDTO.setName( entity.getName() );
+        personDTO.setPersonId( entity.getPersonId() );
 
         return personDTO;
     }
 
     @Override
-    public List<PersonDTO> toDto(List<Person> arg0) {
-        if ( arg0 == null ) {
+    public List<Person> toEntity(List<PersonDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<PersonDTO> list = new ArrayList<PersonDTO>( arg0.size() );
-        for ( Person person : arg0 ) {
+        List<Person> list = new ArrayList<Person>( dtoList.size() );
+        for ( PersonDTO personDTO : dtoList ) {
+            list.add( toEntity( personDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<PersonDTO> toDto(List<Person> entityList) {
+        if ( entityList == null ) {
+            return null;
+        }
+
+        List<PersonDTO> list = new ArrayList<PersonDTO>( entityList.size() );
+        for ( Person person : entityList ) {
             list.add( toDto( person ) );
         }
 
@@ -66,32 +76,22 @@ public class PersonMapperImpl implements PersonMapper {
     }
 
     @Override
-    public Person toEntity(PersonDTO arg0) {
-        if ( arg0 == null ) {
-            return null;
+    public void partialUpdate(Person entity, PersonDTO dto) {
+        if ( dto == null ) {
+            return;
         }
 
-        Person person = new Person();
-
-        person.setId( arg0.getId() );
-        person.setName( arg0.getName() );
-        person.setPersonId( arg0.getPersonId() );
-        person.setPersonName( arg0.getPersonName() );
-
-        return person;
-    }
-
-    @Override
-    public List<Person> toEntity(List<PersonDTO> arg0) {
-        if ( arg0 == null ) {
-            return null;
+        if ( dto.getId() != null ) {
+            entity.setId( dto.getId() );
         }
-
-        List<Person> list = new ArrayList<Person>( arg0.size() );
-        for ( PersonDTO personDTO : arg0 ) {
-            list.add( toEntity( personDTO ) );
+        if ( dto.getPersonName() != null ) {
+            entity.setPersonName( dto.getPersonName() );
         }
-
-        return list;
+        if ( dto.getName() != null ) {
+            entity.setName( dto.getName() );
+        }
+        if ( dto.getPersonId() != null ) {
+            entity.setPersonId( dto.getPersonId() );
+        }
     }
 }

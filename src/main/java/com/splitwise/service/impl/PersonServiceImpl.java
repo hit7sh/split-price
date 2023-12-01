@@ -4,6 +4,7 @@ import com.splitwise.domain.Person;
 import com.splitwise.repository.PersonRepository;
 import com.splitwise.service.PersonService;
 import com.splitwise.service.dto.PersonDTO;
+import com.splitwise.service.dto.TransactionDTO;
 import com.splitwise.service.mapper.PersonMapper;
 import java.util.LinkedList;
 import java.util.List;
@@ -81,5 +82,10 @@ public class PersonServiceImpl implements PersonService {
     public void delete(Long id) {
         log.debug("Request to delete Person : {}", id);
         personRepository.deleteById(id);
+    }
+
+    @Override
+    public List<TransactionDTO> getAllTransactions(Long id) {
+        return personRepository.findById(id).get().getTransactions().stream().map(transaction -> transaction.toTransactionDTO()).collect(Collectors.toList());
     }
 }

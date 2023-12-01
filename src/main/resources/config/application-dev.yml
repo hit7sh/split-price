@@ -34,7 +34,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/splitprice
     username: postgres
-    password: root
+    password: postgres
     hikari:
       poolName: Hikari
       auto-commit: false

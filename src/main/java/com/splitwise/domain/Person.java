@@ -1,6 +1,8 @@
 package com.splitwise.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.splitwise.service.dto.PersonDTO;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -113,6 +115,14 @@ public class Person implements Serializable {
         this.transactions.add(transaction);
         transaction.setPerson(this);
         return this;
+    }
+    public PersonDTO toPersonDTO() {
+        PersonDTO personDTO = new PersonDTO();
+        personDTO.setName(name);
+        personDTO.setId(id);
+        personDTO.setPersonName(personName);
+        personDTO.setPersonId(personId);
+        return personDTO;
     }
 
     public Person removeTransactions(Transaction transaction) {

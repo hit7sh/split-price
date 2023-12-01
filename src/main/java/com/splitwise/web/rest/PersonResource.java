@@ -3,6 +3,7 @@ package com.splitwise.web.rest;
 import com.splitwise.repository.PersonRepository;
 import com.splitwise.service.PersonService;
 import com.splitwise.service.dto.PersonDTO;
+import com.splitwise.service.dto.TransactionDTO;
 import com.splitwise.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -139,6 +140,11 @@ public class PersonResource {
     public List<PersonDTO> getAllPeople() {
         log.debug("REST request to get all People");
         return personService.findAll();
+    }
+
+    @GetMapping("/transactions")
+    public List<TransactionDTO> getAllTransactions() {
+        return personService.getAllTransactions(1L);
     }
 
     /**
