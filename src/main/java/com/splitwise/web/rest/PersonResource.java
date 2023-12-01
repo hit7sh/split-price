@@ -142,9 +142,9 @@ public class PersonResource {
         return personService.findAll();
     }
 
-    @GetMapping("/transactions")
-    public List<TransactionDTO> getAllTransactions() {
-        return personService.getAllTransactions(1L);
+    @GetMapping("/get-transactions/{id}")
+    public List<TransactionDTO> getAllTransactions(@PathVariable Long id) {
+        return personService.getAllTransactions(id);
     }
 
     /**

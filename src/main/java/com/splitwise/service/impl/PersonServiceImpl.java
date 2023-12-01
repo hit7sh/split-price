@@ -1,11 +1,14 @@
 package com.splitwise.service.impl;
 
 import com.splitwise.domain.Person;
+import com.splitwise.domain.Transaction;
 import com.splitwise.repository.PersonRepository;
 import com.splitwise.service.PersonService;
 import com.splitwise.service.dto.PersonDTO;
 import com.splitwise.service.dto.TransactionDTO;
 import com.splitwise.service.mapper.PersonMapper;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -86,6 +89,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<TransactionDTO> getAllTransactions(Long id) {
-        return personRepository.findById(id).get().getTransactions().stream().map(transaction -> transaction.toTransactionDTO()).collect(Collectors.toList());
+        Optional<Person> optionalPerson = personRepository.findById(id);
+        return optionalPerson.map(person -> person.getTransactions().stream().map(Transaction::toTransactionDTO).collect(Collectors.toList())).orElseGet(ArrayList::new);
     }
 }
